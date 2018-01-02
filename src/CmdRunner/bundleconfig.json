@@ -3,19 +3,20 @@
 		"outputFileName": "wwwroot/min/styles.min.css",
 		"inputFiles": [
 			"wwwroot/css/site.css",
-			"www/lib/bootstrap/dist/css/bootstrap.css",
-			"www/lib/bootstrap/dist/css/bootstrap-theme.css"
-		],
-		"minify": {
-			"enabled": true,
-			"renameLocals": true
-		}
+			"wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+			"wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css"
+		]
 	},
 	{
 		"outputFileName": "wwwroot/min/scripts.min.js",
 		"inputFiles": [
 			"wwwroot/js/site.js",
-			"wwwroot/lib/bootstrap/dist/js/bootstrap.js"
-		]
+			"wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+			"wwwroot/lib/jquery/dist/jquery.min.js"
+		],
+		"minify": {
+			"enabled": true,
+			"renameLocals": true
+		}
 	}
 ]

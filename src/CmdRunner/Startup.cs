@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ElectronNET.API;
+using ElectronNET.API.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +27,10 @@ namespace CmdRunner
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(
+			IApplicationBuilder app,
+			IHostingEnvironment env,
+			IApplicationLifetime applicationLifetime)
 		{
 			if (env.IsDevelopment())
 			{
@@ -48,7 +52,20 @@ namespace CmdRunner
 			});
 
 
-			//Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+			applicationLifetime.ApplicationStarted.Register(OnStart);
+		}
+
+		public void OnStart()
+		{
+			Task.Run(async () =>
+			{
+				await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
+				{
+					DarkTheme = true,
+					AutoHideMenuBar = true,
+					Title = "Cmd Runner"
+				});
+			});
 		}
 	}
 }
