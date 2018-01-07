@@ -52,20 +52,7 @@ namespace CmdRunner
 			});
 
 
-			applicationLifetime.ApplicationStarted.Register(OnStart);
-		}
-
-		public void OnStart()
-		{
-			Task.Run(async () =>
-			{
-				await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
-				{
-					DarkTheme = true,
-					AutoHideMenuBar = true,
-					Title = "Cmd Runner"
-				});
-			});
+			applicationLifetime.ApplicationStarted.Register(async () => await Electronize.TryElectronOnStart());
 		}
 	}
 }

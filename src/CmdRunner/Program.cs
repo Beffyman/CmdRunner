@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using ElectronNET.API;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -16,11 +15,19 @@ namespace CmdRunner
 	{
 		public static async Task Main(string[] args)
 		{
-			Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location));
+			string contentDirectory = Directory.GetCurrentDirectory();
+#if DEBUG
+			contentDirectory = Directory.GetCurrentDirectory();
+#else
+			contentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+#endif
+
+
+			Directory.SetCurrentDirectory(contentDirectory);
 
 			await WebHost.CreateDefaultBuilder(args)
-				.UseContentRoot(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
-				.UseElectron(args)
+				.UseContentRoot(contentDirectory)
+				.TryElectronize(args)
 				.UseStartup<Startup>()
 				.Build()
 				.RunAsync();

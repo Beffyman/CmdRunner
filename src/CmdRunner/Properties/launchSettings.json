@@ -10,14 +10,27 @@
 		"Electron.NET App": {
 			"commandName": "Executable",
 			"executablePath": "C:\\Program Files\\dotnet\\dotnet.exe",
-			"commandLineArgs": "electronize start"
+			"commandLineArgs": "electronize start",
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"Electron_App": "true"
+			}
 		},
-
+		"CmdRunner": {
+			"commandName": "Project",
+			"launchBrowser": true,
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"Electron_App": "false"
+			},
+			"applicationUrl": "http://localhost:53349"
+		},
 		"IIS Express": {
 			"commandName": "IISExpress",
 			"launchBrowser": true,
 			"environmentVariables": {
-				"ASPNETCORE_ENVIRONMENT": "Development"
+				"ASPNETCORE_ENVIRONMENT": "Development",
+				"Electron_App": "false"
 			}
 		}
 	}

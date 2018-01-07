@@ -5,13 +5,16 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
+		<PackageReference Include="CliWrap" Version="1.7.3" />
 		<PackageReference Include="ElectronNET.API" Version="0.0.7" />
 		<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
