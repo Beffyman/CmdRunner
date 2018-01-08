@@ -1,4 +1,4 @@
-# Configures the default variables that every script uses, only runs once per script batch
+# Builds the application.
 ##
 
 # Make so the script will stop when it hits an error.
@@ -17,3 +17,16 @@ If ([string]::IsNullOrEmpty($scriptBin)) { $scriptBin = $pwd }
 Set-Location $scriptBin
 
 
+#############################################################################
+
+Write-Host ">Build" -ForegroundColor Magenta;
+
+
+& "./01_Initialize.ps1" | Out-Host;
+& "./10_Clean.ps1" | Out-Host;
+
+
+dotnet build $projectPath -c $configuration | Out-Host;
+
+
+Write-Host "~Build" -ForegroundColor Magenta;

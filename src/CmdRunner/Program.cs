@@ -8,10 +8,11 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using CmdRunner.Configuration;
 
 namespace CmdRunner
 {
-	public class Program
+	public static class Program
 	{
 		public static async Task Main(string[] args)
 		{

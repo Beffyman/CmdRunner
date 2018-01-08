@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CmdRunner
+namespace CmdRunner.Configuration
 {
 	public class Startup
 	{

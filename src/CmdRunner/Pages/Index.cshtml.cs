@@ -9,6 +9,10 @@ namespace CmdRunner.Pages
 {
 	public class IndexModel : PageModel
 	{
+
+		public IList<string> Configurations { get; set; }
+		public string ScriptRun { get; set; }
+
 		public void OnGet()
 		{
 

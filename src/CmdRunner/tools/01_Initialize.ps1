@@ -17,6 +17,31 @@ If ([string]::IsNullOrEmpty($scriptBin)) { $scriptBin = $pwd }
 Set-Location $scriptBin
 
 
-& ./01_Initialize.ps1 | Out-Host;
+#############################################################################
 
 
+Write-Host ">Initialize" -ForegroundColor Magenta
+
+$Global:initialized = $false;
+
+if($Global:initialized -eq $false){
+	$Global:initialized = $true;
+
+	#Clean
+	$Global:rootDirectory = "./../..";
+
+	#Build
+	$Global:configuration = "Debug"
+
+
+	#Publish
+	$Global:projectName = "CmdRunner";
+	$Global:projectDirectory = "./..";
+	$Global:projectPath = "$projectDirectory/$projectName.csproj";
+
+	#Start
+	$Global:publishFolder = "./../obj/desktop/";
+
+}
+
+Write-Host "~Initialize" -ForegroundColor Magenta

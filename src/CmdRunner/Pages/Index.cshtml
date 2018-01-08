@@ -3,3 +3,21 @@
 @{
 	ViewData["Title"] = "Home page";
 }
+
+
+
+<div class="row row-offcanvas row-offcanvas-right">
+
+	<div id="scriptsSidepanel" class="col-6 col-md-3 sidebar-offcanvas">
+		<div class="list-group">
+			<a class="list-group-item">Test1</a>
+			<a class="list-group-item">Test2</a>
+			<a class="list-group-item">Test3</a>
+			<a class="list-group-item">Test4</a>
+		</div>
+	</div>
+
+	<div class="col-12 col-md-9">
+		@Html.TextAreaFor(x => x.ScriptRun)
+	</div>
+</div>

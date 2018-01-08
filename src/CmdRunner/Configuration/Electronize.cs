@@ -6,11 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CmdRunner
+namespace CmdRunner.Configuration
 {
 	public static class Electronize
 	{
+#if DEBUG
 		public static string Electron_App = Environment.GetEnvironmentVariable(nameof(Electron_App));
+#else
+		public static string Electron_App = true.ToString();
+#endif
 		public static bool IsElectron
 		{
 			get
@@ -41,7 +45,7 @@ namespace CmdRunner
 				{
 					DarkTheme = true,
 					AutoHideMenuBar = true,
-					Title = $"{typeof(Electronize).Namespace} - V{typeof(Electronize).Assembly.GetName().Version}"
+					Title = $"{typeof(Electronize).Namespace} - V{typeof(Electronize).Assembly.GetName().Version}",
 				});
 			}
 		}
