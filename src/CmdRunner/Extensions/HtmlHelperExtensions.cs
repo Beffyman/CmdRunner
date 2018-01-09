@@ -1,4 +1,5 @@
 ﻿using CmdRunner.Dtos.Configuration;
+using CmdRunner.Dtos.Path;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -12,6 +13,9 @@ namespace CmdRunner.Extensions
 {
 	public static class HtmlHelperExtensions
 	{
+
+		#region Location Configuration Dropdown
+
 		public static IHtmlContent DropDownForConfiguration<TModel>(
 			this IHtmlHelper<TModel> html,
 			Expression<Func<TModel, IList<ScriptLocationConfiguration>>> expression,
@@ -67,5 +71,69 @@ namespace CmdRunner.Extensions
 
 			return str;
 		}
+		#endregion Location Configuration Dropdown
+
+
+		#region Script Configuration List
+
+		public static IHtmlContent ListForPathItem<TModel>(
+			this IHtmlHelper<TModel> html,
+			Expression<Func<TModel, IEnumerable<IPathItem>>> expression)
+		{
+			var list = expression.Compile().Invoke(html.ViewData.Model);
+			if (list == null)
+			{
+				throw new ArgumentNullException($"Provided list cannot be null");
+			}
+
+			var str = new StringBuilder();
+			foreach (var item in list)
+			{
+				str.Build_ListForPathItem(item);
+			}
+
+			return new HtmlString(str.ToString());
+		}
+
+		public static IHtmlContent ListForPathItem<TModel>(
+			this IHtmlHelper<TModel> html,
+			IEnumerable<IPathItem> list)
+		{
+			if (list == null)
+			{
+				throw new ArgumentNullException($"Provided list cannot be null");
+			}
+
+			var str = new StringBuilder();
+			foreach (var item in list)
+			{
+				str.Build_ListForPathItem(item);
+			}
+
+			return new HtmlString(str.ToString());
+		}
+
+		private static void Build_ListForPathItem(this StringBuilder builder, IPathItem item)
+		{
+			if (item is DirectoryItem dir)
+			{
+				builder.AppendLine($@"<li>");
+				builder.AppendLine($@"<a href=""#{item.Name}"" data-toggle=""collapse"" aria-expanded=""false"">{item.Name}</a>");
+				builder.AppendLine($@"<ul class=""collapselist-unstyled"" id=""{item.Name}"">");
+				foreach (var child in dir.Children)
+				{
+					builder.Build_ListForPathItem(child);
+				}
+				builder.AppendLine($@"</ul>");
+				builder.AppendLine($@"</li>");
+			}
+			else if (item is FileItem)
+			{
+				builder.AppendLine($@"<li><a href=""#"">{item.Name}</a></li>");
+			}
+		}
+
+		#endregion Script Configuration List
+
 	}
 }

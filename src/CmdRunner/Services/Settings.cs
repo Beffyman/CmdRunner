@@ -13,7 +13,8 @@ namespace CmdRunner.Services
 	public interface ISettings : ISingletonInjectable
 	{
 		string Location { get; set; }
-		Guid? CurrentConfiguration { get; set; }
+		ScriptLocationConfiguration CurrentConfiguration { get; }
+		Guid? CurrentConfigurationId { get; set; }
 		IList<ScriptLocationConfiguration> Configurations { get; set; }
 		IList<ScriptApplicationConfiguration> Applications { get; set; }
 
@@ -44,8 +45,9 @@ namespace CmdRunner.Services
 		const string FileName = "settings.json";
 
 
+		public ScriptLocationConfiguration CurrentConfiguration => Configurations.SingleOrDefault(x => x.Id == CurrentConfigurationId);
 		public string Location { get; set; } = "";
-		public Guid? CurrentConfiguration { get; set; }
+		public Guid? CurrentConfigurationId { get; set; }
 		public IList<ScriptLocationConfiguration> Configurations { get; set; } = new List<ScriptLocationConfiguration>();
 		public IList<ScriptApplicationConfiguration> Applications { get; set; } = new List<ScriptApplicationConfiguration>();
 

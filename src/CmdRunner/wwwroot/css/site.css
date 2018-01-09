@@ -10,11 +10,6 @@ body {
 	padding-right: 15px;
 }
 
-/* QR code generator */
-#qrCode {
-	margin: 15px;
-}
-
 
 
 
@@ -28,6 +23,8 @@ body {
 	max-width: 250px;
 	height: 100vh;
 }*/
+
+
 
 
 body {

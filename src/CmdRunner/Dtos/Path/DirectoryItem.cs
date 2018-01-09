@@ -17,28 +17,6 @@ namespace CmdRunner.Dtos.Path
 
 		public string FullPath { get; set; }
 
-		public IList<IPathItem> Children { get; set; }
-
-		public void PopulateChildren()
-		{
-			Children?.Clear();
-			if (Children == null)
-			{
-				Children = new List<IPathItem>();
-			}
-
-			foreach (var item in Directory.EnumerateFiles(FullPath))
-			{
-				var fileAttributes = File.GetAttributes(item);
-				if ((fileAttributes & FileAttributes.Directory) != 0)
-				{
-					Children.Add(new DirectoryItem(item));
-				}
-				else
-				{
-					Children.Add(new FileItem(item));
-				}
-			}
-		}
+		public IEnumerable<IPathItem> Children { get; set; }
 	}
 }
