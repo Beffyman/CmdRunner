@@ -54,41 +54,57 @@ a, a:hover, a:focus {
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
+	min-width: 15vmin;
+	max-width: 20vmax;
+	height: 100vh;
 }
 
-#sidebar .sidebar-header {
-	padding: 20px;
-	background: #6d7fcc;
-}
-
-#sidebar ul.components {
-	padding: 20px 0;
-	border-bottom: 1px solid #47748b;
-}
-
-#sidebar ul p {
-	color: #fff;
-	padding: 10px;
-}
-
-#sidebar ul li a {
-	padding: 10px;
-	font-size: 1.1em;
-	display: block;
-}
-
-	#sidebar ul li a:hover {
-		color: #7386D5;
-		background: #fff;
+	#sidebar .sidebar-header {
+		padding: 20px;
+		background: #6d7fcc;
 	}
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-	color: #fff;
-	background: #6d7fcc;
-}
+	#sidebar ul.components {
+		padding: 20px 0;
+		border-bottom: 1px solid #47748b;
+	}
+
+	#sidebar ul p {
+		color: #fff;
+		padding: 10px;
+	}
+
+	#sidebar ul li a {
+		padding: 10px;
+		font-size: 1.1em;
+		display: block;
+	}
+
+		#sidebar ul li a:hover {
+			color: #7386D5;
+			background: #fff;
+		}
+
+	#sidebar ul li.active > a, a[aria-expanded="true"] {
+		color: #fff;
+		background: #6d7fcc;
+	}
 
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
+}
+
+
+#content {
+	float: left;
+}
+
+#runnerOutput {
+	min-width: 20vmin;
+	width: 70vw;
+	max-width: 70vmax;
+	height: 100vh;
+	resize: none;
 }
