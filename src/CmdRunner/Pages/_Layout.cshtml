@@ -4,25 +4,16 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>@ViewData["Title"] - Cmd Runner</title>
-
-	@Html.Partial("_Styles")
+	@Html.Partial("_Scripts")
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a asp-page="/Index" class="navbar-brand">Cmd Runner</a>
+				<p class="navbar-brand">@Html.AssemblyVersion()</p>
 			</div>
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a asp-page="/Index">Home</a></li>
-				</ul>
+				<p class="nav navbar-text navbar-left">Current Script Location</p>
 				<p class="nav navbar-text navbar-right">Hello, @Environment.UserName!</p>
 			</div>
 		</div>
@@ -35,7 +26,6 @@
 				<p>&copy; 2017 - Cmd Runner</p>
 			</footer>*@
 	</div>
-
-	@Html.Partial("_Scripts")
+	@Html.Partial("_Styles")
 </body>
 </html>

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using CmdRunner.Dtos.Configuration;
 using CmdRunner.Dtos.Path;
+using CmdRunner.Extensions;
 using CmdRunner.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,6 +18,7 @@ namespace CmdRunner.Pages
 	{
 		private readonly ISettings _settings;
 		private readonly IFileManager _fileManager;
+		public IEnumerable<IPathItem> ConfgurationFileItems { get; set; }
 
 		public IndexModel(
 			ISettings settings,
@@ -25,16 +28,38 @@ namespace CmdRunner.Pages
 			_fileManager = fileManager;
 		}
 
-		public IEnumerable<IPathItem> ConfgurationFileItems { get; set; }
-
 		public async Task OnGetAsync()
 		{
-			if (Directory.Exists(_settings.Location))
-			{
-				ConfgurationFileItems = _fileManager.GetItems(_settings.Location, _settings.CurrentConfiguration.Filters);
-			}
+			LoadFileItems();
 
 			await Task.CompletedTask;
+		}
+
+		private void LoadFileItems()
+		{
+
+			if (Directory.Exists(_settings.Location))
+			{
+				ConfgurationFileItems = _fileManager.GetItems(_settings.Location, _settings.CurrentConfiguration?.Filters);
+			}
+			else
+			{
+				ConfgurationFileItems = new IPathItem[] { };
+			}
+		}
+
+		[HttpGet]
+		public IActionResult OnGetList()
+		{
+			LoadFileItems();
+
+			var sb = new StringBuilder();
+			foreach (var item in ConfgurationFileItems ?? new IPathItem[] { })
+			{
+				sb.Build_ListForPathItem(item);
+			}
+
+			return Content(sb.ToString(), "text/html");
 		}
 
 

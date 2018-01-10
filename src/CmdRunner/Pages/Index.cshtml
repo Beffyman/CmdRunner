@@ -4,38 +4,16 @@
 	ViewData["Title"] = "Home page";
 }
 
-<script type="text/javascript">
-	$(document).ready(function () {
-		$("@nameof(Settings.Configurations)").change(function (e) {
-
-		})
-	});
-</script>
-
-
 @* https://bootstrapious.com/p/bootstrap-sidebar *@
 <div class="wrapper">
 	<nav id="sidebar" class="navbar-left">
-		<!-- Sidebar Header -->
+
 		<div class="sidebar-header">
-			@Html.DropDownForConfiguration(_settings.Configurations, nameof(Settings.Configurations), _settings.CurrentConfigurationId)
+			@Html.DropDownForConfiguration(_settings.Configurations, nameof(Settings.Configurations).ToLower(), _settings.CurrentConfigurationId)
 		</div>
-		<!-- Sidebar Links -->
+
 		<ul id="fileList" class="list-unstyled components">
-
 			@Html.ListForPathItem(m => m.ConfgurationFileItems)
-
-			@*<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li>
-					 Link with dropdown items
-					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li><a href="#">Page</a></li>
-						<li><a href="#">Page</a></li>
-						<li><a href="#">Page</a></li>
-					</ul>
-				</li>*@
 		</ul>
 	</nav>
 

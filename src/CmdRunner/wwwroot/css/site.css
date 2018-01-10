@@ -100,8 +100,8 @@ ul ul a {
 
 #runnerOutput {
 	min-width: 20vmin;
-	width: 70vw;
-	max-width: 70vmax;
+	width: 65vw;
+	max-width: 65vmax;
 	height: 100vh;
 	resize: none;
 }

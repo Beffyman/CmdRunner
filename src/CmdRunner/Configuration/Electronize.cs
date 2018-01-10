@@ -45,7 +45,7 @@ namespace CmdRunner.Configuration
 				{
 					DarkTheme = true,
 					AutoHideMenuBar = true,
-					Title = $"{typeof(Electronize).Namespace} - V{typeof(Electronize).Assembly.GetName().Version}",
+					Title = $"{typeof(Program).Namespace} - V{typeof(Program).Assembly.GetName().Version}",
 				});
 			}
 		}

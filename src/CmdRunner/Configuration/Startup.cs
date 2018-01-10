@@ -25,6 +25,7 @@ namespace CmdRunner.Configuration
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.UseInjectables();
+			//services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
 			services.AddMvc();
 		}
 

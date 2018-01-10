@@ -15,6 +15,7 @@
 		<PackageReference Include="ElectronNET.API" Version="0.0.7" />
 		<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -22,12 +23,17 @@
 		<DotNetCliToolReference Include="ElectronNET.CLI" Version="0.0.7" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' == 'Debug'">
 		<Content Update="wwwroot/**/*.*" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(Configuration)' == 'Release'">
+		<Content Update="wwwroot/min/*.*" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+		<Content Update="wwwroot/img/*.*" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+	</ItemGroup>
+
 	<ItemGroup>
-		<Content Update="electron.manifest.json" CopyToOutputDirectory="PreserveNewest" />
+		<Content Update="electron.manifest.json" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 
 </Project>

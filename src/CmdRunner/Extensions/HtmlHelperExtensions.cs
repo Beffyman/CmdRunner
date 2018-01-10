@@ -42,7 +42,7 @@ namespace CmdRunner.Extensions
 		}
 
 
-		private static StringBuilder Build_DropDownForConfiguration(
+		internal static StringBuilder Build_DropDownForConfiguration(
 			IList<ScriptLocationConfiguration> list,
 			string @id,
 			Guid? selected = null,
@@ -113,7 +113,7 @@ namespace CmdRunner.Extensions
 			return new HtmlString(str.ToString());
 		}
 
-		private static void Build_ListForPathItem(this StringBuilder builder, IPathItem item)
+		internal static void Build_ListForPathItem(this StringBuilder builder, IPathItem item)
 		{
 			if (item is DirectoryItem dir)
 			{
@@ -135,5 +135,19 @@ namespace CmdRunner.Extensions
 
 		#endregion Script Configuration List
 
+
+		public static bool IsDebug(this IHtmlHelper html)
+		{
+#if DEBUG
+			return true;
+#else
+			return false;
+#endif
+		}
+
+		public static string AssemblyVersion(this IHtmlHelper html)
+		{
+			return typeof(HtmlHelperExtensions).Assembly.GetName().Version.ToString();
+		}
 	}
 }

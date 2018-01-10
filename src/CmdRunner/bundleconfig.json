@@ -4,7 +4,6 @@
 		"inputFiles": [
 			"wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
 			"wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css",
-			"wwwroot/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css",
 			"wwwroot/css/site.css"
 		]
 	},
@@ -13,7 +12,6 @@
 		"inputFiles": [
 			"wwwroot/lib/jquery/dist/jquery.min.js",
 			"wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
-			"wwwroot/lib/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
 			"wwwroot/js/site.js"
 		],
 		"minify": {
