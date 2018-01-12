@@ -2,6 +2,7 @@
 
 <div id="Configurations">
 	<form method="post">
+		@Html.DropDownForConfiguration(_settings.Configurations, nameof(_settings.Configurations).ToLower(), _settings.CurrentConfigurationId, @class: "navbar-left dropdown-dark", includeNone: false)
 
 	</form>
 </div>

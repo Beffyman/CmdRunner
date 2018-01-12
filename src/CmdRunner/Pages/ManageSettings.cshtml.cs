@@ -25,8 +25,14 @@ namespace CmdRunner.Pages
 
 		public async Task OnGetAsync()
 		{
-
+			await Settings.LoadAsync();
 			await Task.CompletedTask;
+		}
+
+
+		public async Task OnPostAsync()
+		{
+			await Settings.SaveAsync();
 		}
 	}
 }

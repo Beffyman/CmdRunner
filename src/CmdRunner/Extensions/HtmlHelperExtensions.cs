@@ -21,11 +21,12 @@ namespace CmdRunner.Extensions
 			this IHtmlHelper<TModel> html,
 			Expression<Func<TModel, IList<ScriptLocationConfiguration>>> expression,
 			Guid? selected = null,
-			string @class = null)
+			string @class = null,
+			bool includeNone = true)
 		{
 			var list = expression.Compile().Invoke(html.ViewData.Model);
 
-			var str = Build_DropDownForConfiguration(list, expression.Body.ToString(), selected, @class);
+			var str = Build_DropDownForConfiguration(list, expression.Body.ToString(), selected, @class, includeNone);
 
 			return new HtmlString(str.ToString());
 		}
@@ -35,9 +36,10 @@ namespace CmdRunner.Extensions
 			IList<ScriptLocationConfiguration> list,
 			string @id,
 			Guid? selected = null,
-			string @class = null)
+			string @class = null,
+			bool includeNone = true)
 		{
-			var str = Build_DropDownForConfiguration(list, id, selected, @class);
+			var str = Build_DropDownForConfiguration(list, id, selected, @class, includeNone);
 
 			return new HtmlString(str.ToString());
 		}
@@ -47,7 +49,8 @@ namespace CmdRunner.Extensions
 			IList<ScriptLocationConfiguration> list,
 			string @id,
 			Guid? selected = null,
-			string @class = null)
+			string @class = null,
+			bool includeNone = true)
 		{
 			if (list == null)
 			{
@@ -59,7 +62,10 @@ namespace CmdRunner.Extensions
 			var str = new StringBuilder();
 			//  < label for= "sel1" > Select list:</ label >
 			str.AppendLine($@"<select id=""{@id}"" class=""{@class}"">");
-			str.AppendLine($@"<option value="""" {(!selected.HasValue ? "selected" : string.Empty)} disabled>Select a configuration</option>");
+			if (includeNone)
+			{
+				str.AppendLine($@"<option value="""" {(!selected.HasValue ? "selected" : string.Empty)} disabled>Select a configuration</option>");
+			}
 			foreach (var item in list)
 			{
 				string isSelected = (selected == item.Id ? "selected" : string.Empty);

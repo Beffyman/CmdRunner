@@ -5,7 +5,6 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
 		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-		<MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
@@ -36,5 +35,7 @@
 		<Folder Include="wwwroot\min\" />
 		<Content Update="electron.manifest.json" CopyToOutputDirectory="Always" />
 	</ItemGroup>
+
+	<Target Name="PrecompileRazorViews" AfterTargets="Build" DependsOnTargets="MvcRazorPrecompile" />
 
 </Project>

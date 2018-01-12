@@ -37,10 +37,12 @@ namespace CmdRunner.Pages
 
 		private void LoadFileItems()
 		{
-
-			if (Directory.Exists(_settings.Location))
+			if (Directory.Exists(_settings.CurrentConfiguration?.FolderLocation))
 			{
-				ConfgurationFileItems = _fileManager.GetItems(_settings.Location, _settings.CurrentConfiguration?.Filters);
+				ConfgurationFileItems =
+					_fileManager.GetItems(
+					_settings.CurrentConfiguration.FolderLocation,
+					_settings.CurrentConfiguration?.Filters);
 			}
 			else
 			{
