@@ -16,12 +16,12 @@ namespace CmdRunner.Pages
 {
 	public class IndexModel : PageModel
 	{
-		private readonly ISettings _settings;
+		private readonly ISettingsManager _settings;
 		private readonly IFileManager _fileManager;
 		public IEnumerable<IPathItem> ConfgurationFileItems { get; set; }
 
 		public IndexModel(
-			ISettings settings,
+			ISettingsManager settings,
 			IFileManager fileManager)
 		{
 			_settings = settings;
@@ -62,6 +62,11 @@ namespace CmdRunner.Pages
 			return Content(sb.ToString(), "text/html");
 		}
 
+		[HttpPost]
+		public IActionResult OpenSettings()
+		{
+			return RedirectToPage("ManageSettings");
+		}
 
 	}
 }

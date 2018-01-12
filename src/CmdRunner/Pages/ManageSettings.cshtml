@@ -1,0 +1,35 @@
+﻿@page
+@model ManageSettingsModel
+@{
+	ViewData["Title"] = "Settings";
+}
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="nav navbar-text navbar-left">
+			<button onclick="location.href='@Url.Page("Index")';" id="backToMain" />
+		</div>
+	</div>
+</nav>
+<div class="container body-content">
+	<div class="wrapper">
+		<nav id="sidebar" class="navbar-left">
+			<ul id="fileList" class="list-unstyled components">
+				<li><a href="#General" data-toggle="collapse" aria-expanded="false">General</a></li>
+				<li><a href="#Configurations" data-toggle="collapse" aria-expanded="false">Configurations</a></li>
+				<li><a href="#Applications" data-toggle="collapse" aria-expanded="false">Applications</a></li>
+			</ul>
+		</nav>
+
+		<div id="content">
+			@{
+				Html.RenderPartial("ManageSettings/_General", Model);
+				Html.RenderPartial("ManageSettings/_Configurations", Model);
+				Html.RenderPartial("ManageSettings/_Applications", Model);
+			}
+		</div>
+	</div>
+</div>
+
+

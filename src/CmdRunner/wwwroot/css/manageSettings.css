@@ -1,0 +1,13 @@
+﻿
+#backToMain {
+	border-color: transparent;
+	position: relative;
+	/*fill: transparent;*/
+	background: transparent url(./../img/leftArrow.svg) no-repeat left top;
+	width: 34px;
+	height: 34px;
+}
+
+.image-upload > input {
+	display: none;
+}

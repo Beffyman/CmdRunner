@@ -4,20 +4,28 @@
 	ViewData["Title"] = "Home page";
 }
 
-@* https://bootstrapious.com/p/bootstrap-sidebar *@
-<div class="wrapper">
-	<nav id="sidebar" class="navbar-left">
 
-		<div class="sidebar-header">
-			@Html.DropDownForConfiguration(_settings.Configurations, nameof(Settings.Configurations).ToLower(), _settings.CurrentConfigurationId)
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="nav navbar-text navbar-left">
+			@Html.DropDownForConfiguration(_settings.Configurations, nameof(_settings.Configurations).ToLower(), _settings.CurrentConfigurationId, @class: "navbar-left dropdown-dark")
+			<button onclick="location.href='@Url.Page("ManageSettings")';" id="settingsButton" />
 		</div>
+		<p class="nav navbar-text navbar-right">Hello, @Environment.UserName!</p>
+	</div>
+</nav>
+<div class="container body-content">
+	<div class="wrapper">
+		<nav id="sidebar" class="navbar-left">
+			<ul id="fileList" class="list-unstyled components">
+				@Html.ListForPathItem(m => m.ConfgurationFileItems)
+			</ul>
+		</nav>
 
-		<ul id="fileList" class="list-unstyled components">
-			@Html.ListForPathItem(m => m.ConfgurationFileItems)
-		</ul>
-	</nav>
-
-	<div id="content" class="">
-		<textarea id="runnerOutput" class="form-control" readonly></textarea>
+		<div id="content">
+			<textarea id="runnerOutput" class="form-control" readonly></textarea>
+		</div>
 	</div>
 </div>
+
+

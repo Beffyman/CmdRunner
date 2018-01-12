@@ -3,29 +3,18 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@ViewData["Title"] - Cmd Runner</title>
+	@if (Html.IsDebug())
+	{
+		<title>@ViewData["Title"] - DEBUG : @Html.GetCurrentDirectory()</title>
+	}
+	else
+	{
+		<title>@ViewData["Title"] - RELEASE : @Html.GetCurrentDirectory()</title>
+	}
 	@Html.Partial("_Scripts")
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<p class="navbar-brand">@Html.AssemblyVersion()</p>
-			</div>
-			<div class="navbar-collapse collapse">
-				<p class="nav navbar-text navbar-left">Current Script Location</p>
-				<p class="nav navbar-text navbar-right">Hello, @Environment.UserName!</p>
-			</div>
-		</div>
-	</nav>
-	<div class="container body-content">
-		@RenderBody()
-		@*<hr />
-			<hr />
-			<footer>
-				<p>&copy; 2017 - Cmd Runner</p>
-			</footer>*@
-	</div>
+	@RenderBody()
 	@Html.Partial("_Styles")
 </body>
 </html>

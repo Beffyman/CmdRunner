@@ -1,0 +1,16 @@
+﻿@model ManageSettingsModel
+
+<div id="General">
+	<form method="post">
+		<div class="form-inline">
+			@Html.LabelFor(x => x.Settings.Location)
+			@Html.TextBoxFor(x => x.Settings.Location, new { @class = "form-control", @readonly = "" })
+			<span class="image-upload">
+				<label for="lookupFolder">
+					<img src="~/img/folder.svg" width="32" height="32" />
+				</label>
+				<input id="lookupFolder" type="file" webkitdirectory mozdirectory msdirectory odirectory directory multiple />
+			</span>
+		</div>
+	</form>
+</div>

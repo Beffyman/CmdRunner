@@ -1,35 +1,56 @@
-body {
+﻿body {
 	padding-top: 50px;
 	padding-bottom: 20px;
-}
-
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-
-
-
-
-/*.wrapper {
-	display: flex;
-}
-
-#sidebar {
-	min-width: 250px;
-	max-width: 250px;
-	height: 100vh;
-}*/
-
-
-
-
-body {
 	font-family: 'Poppins', sans-serif;
 	background: #fafafa;
+}
+
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+	width: 99vw;
+	padding-left: .5vw;
+	padding-right: .5vw;
+}
+
+#settingsButton {
+	border-color: transparent;
+	position: relative;
+	fill: transparent;
+	background: transparent url(./../img/cog.svg) no-repeat left top;
+	width: 34px;
+	height: 34px;
+}
+
+
+/*Keep content on the left side so it grows towards the right*/
+#content {
+	padding-top: 3vh;
+	float: left;
+}
+
+/*Stretch container*/
+.container {
+	width: 100vw;
+}
+
+/*.navbar-fixed-top {
+	min-height: 10vh;
+	max-height: 65px;
+}*/
+
+.navbar-right {
+	padding-right: 3vw;
+}
+
+.dropdown {
+	background-color: rgb(51, 51, 51);
+	color: rgb(157, 157, 157);
+	transition: all 0.3s;
+	width: 24vw;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1.7em;
 }
 
 p {
@@ -51,9 +72,8 @@ a, a:hover, a:focus {
 	background: #7386D5;
 	color: #fff;
 	transition: all 0.3s;
-	min-width: 15vmin;
-	max-width: 20vmax;
-	height: 100vh;
+	width: 25vw;
+	height: 88vh;
 }
 
 	#sidebar .sidebar-header {
@@ -91,17 +111,4 @@ ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
 	background: #6d7fcc;
-}
-
-
-#content {
-	float: left;
-}
-
-#runnerOutput {
-	min-width: 20vmin;
-	width: 65vw;
-	max-width: 65vmax;
-	height: 100vh;
-	resize: none;
 }

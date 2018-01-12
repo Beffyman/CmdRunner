@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -53,10 +54,7 @@ namespace CmdRunner.Extensions
 				throw new ArgumentNullException($"Provided list cannot be null");
 			}
 
-			if (@class == null)
-			{
-				@class = "form-control";
-			}
+			@class = $"{@class ?? string.Empty} form-control dropdown";
 
 			var str = new StringBuilder();
 			//  < label for= "sel1" > Select list:</ label >
@@ -148,6 +146,11 @@ namespace CmdRunner.Extensions
 		public static string AssemblyVersion(this IHtmlHelper html)
 		{
 			return typeof(HtmlHelperExtensions).Assembly.GetName().Version.ToString();
+		}
+
+		public static string GetCurrentDirectory(this IHtmlHelper html)
+		{
+			return Directory.GetCurrentDirectory();
 		}
 	}
 }

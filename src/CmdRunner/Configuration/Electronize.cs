@@ -46,6 +46,7 @@ namespace CmdRunner.Configuration
 					DarkTheme = true,
 					AutoHideMenuBar = true,
 					Title = $"{typeof(Program).Namespace} - V{typeof(Program).Assembly.GetName().Version}",
+					MinWidth = 775
 				});
 			}
 		}

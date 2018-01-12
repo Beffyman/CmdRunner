@@ -4,7 +4,9 @@
 		"inputFiles": [
 			"wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
 			"wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css",
-			"wwwroot/css/site.css"
+			"wwwroot/css/index.css",
+			"wwwroot/css/runnerArea.css",
+			"wwwroot/css/manageSettings.css"
 		]
 	},
 	{
@@ -12,7 +14,8 @@
 		"inputFiles": [
 			"wwwroot/lib/jquery/dist/jquery.min.js",
 			"wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
-			"wwwroot/js/site.js"
+			"wwwroot/js/index.js",
+			"wwwroot/js/manageSettings.js"
 		],
 		"minify": {
 			"enabled": true,
